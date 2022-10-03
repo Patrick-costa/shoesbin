@@ -1,0 +1,265 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Roboto+Slab:wght@900&display=swap");
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-content {
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  background-color: #fff;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-footer{
+  background-color: #fff;
+}
+
+ion-header{
+  background-color: #fff;
+}
+
+.pagina {
+  display: flex;
+  background-color: #fff;
+  ion-fab-button {
+    width: 45px;
+    height: 45px;
+
+    ion-icon {
+      font-size: 22px;
+    }
+  }
+}
+
+.imagem {
+  transform: scaleX(-1);
+
+  img {
+    width: 170px;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.topo {
+
+  ion-icon {
+    font-size: 25px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgb(20, 20, 20);
+  }
+}
+
+.items {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .caixa {
+    margin-top: 30px;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      margin-top: 0px;
+    }
+
+    .titulo {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: rgb(20, 20, 20);
+      text-transform: capitalize;
+    }
+
+    .preco {
+      margin-top: 10px;
+
+      .preco-antigo {
+        text-decoration: line-through;
+        color: #c9c9c9;
+        font-weight: 400;
+        font-size: .8rem;
+        margin-right: 5px;
+      }
+
+      .preco-novo {
+        font-size: 1rem;
+        color: #E36C01;
+        font-weight: bold;
+      }
+    }
+
+    .parcela {
+      font-size: .7rem;
+      margin-top: 2px;
+    }
+  }
+}
+
+.menu {
+  padding: 10px;
+  width: 60px;
+  height: 100vh;
+  background-color: rgb(20, 20, 20);
+  display: flex;
+  flex-direction: column;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  align-items: center;
+
+  ion-icon {
+    font-size: 30px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+
+  .opcao {
+    color: #fff;
+    padding: 15px 0px 15px 0px;
+    font-size: .85rem;
+    display: relative;
+
+    p {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+
+    }
+  }
+
+
+}
+
+.container {
+  width: calc(100vw - 60px);
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #E36C01;
+  color: #fff;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  padding-left: 40px;
+  border-radius: 3px;
+  height: 40px;
+  font-size: .8rem;
+  border: 1px solid;
+  border-color: #00000010;
+  outline: none;
+  color: #9b9b9b;
+  margin-bottom: 20px;
+
+  &::placeholder {
+      color: #9b9b9b;
+      font-size: .7rem;
+  }
+
+  &:focus,
+  &:active {
+      border-color: #E36C01;
+      border: 2px solid;
+      color: #E36C01;
+      border-width: 1px;
+  }
+}
+
+.produtos{
+  overflow-y: auto;
+  height: 73%;   
+  margin-top: 30px;
+  .produto{
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+
+
+      img{
+          width: 90px;
+          height: 90px;
+      }
+
+      .delete{
+          font-size: 25px;
+          color: #ff0000;
+
+      }
+
+      .titulo{
+          color: #E36C01
+      }
+
+      .informacoes{
+          flex-direction: column;
+          align-items: flex-start;
+          margin-left: 20px;
+          width: 100%;
+          .titulo{
+              font-weight: 1rem;
+              font-weight: bold;
+          }
+
+          .texto{
+              font-size: .7rem;
+              margin-bottom: 1px;
+          }
+      }
+  }
+}

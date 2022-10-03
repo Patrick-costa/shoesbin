@@ -1,0 +1,33 @@
+<ion-content>
+  <div class="pagina flex">
+    <div class="vetor flex">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <span class="titulo">Bem vindo</span>
+      <span class="subtitulo">Faça o login para continuar</span>
+      <div class="form">
+        <form (ngSubmit)="logar()">
+          <div>
+            <input type="text" [formControl]="email" required [(ngModel)]="creds.email" name='email' matInput
+              placeholder="patrick@gmail.com" (focus)="statusIconEmail = true" (blur)="statusIconEmail = false">
+            <ion-icon name="mail-outline" [class.colorir]="statusIconEmail == true"></ion-icon>
+          </div>
+          <div>
+            <input type="password" [formControl]="senha" required [(ngModel)]="creds.senha" matInput name='senha'
+              class="mb-5" placeholder="1234" (focus)="statusIconSenha = true" (blur)="statusIconSenha = false"
+              [class.colorir]="statusIconSenha == true">
+            <ion-icon name="lock-closed-outline" [class.colorir]="statusIconSenha == true"></ion-icon>
+            <span>Esqueceu sua senha?</span>
+          </div>
+          <button type="submit" class="flex">
+            <span *ngIf="!avancoBoolean">Entrar</span>
+            <div class="loader" *ngIf="avancoBoolean"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="cadastro flex">
+      <span class="cinza">Não possui uma conta? <span class="laranja" routerLink="/cadastrar"><b>Cadastre-se agora</b></span></span>
+    </div>
+  </div>
+
+</ion-content>

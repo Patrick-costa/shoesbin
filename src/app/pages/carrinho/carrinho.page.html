@@ -1,0 +1,54 @@
+<ion-content>
+    <div class="pagina">
+        <div class="topo">
+            <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+            <span>Carrinho</span>
+            <div></div>
+        </div>
+        <div class="produtos ">
+            <div class="produto flex" *ngFor="let produto of produtos">
+                <img [src]="produto.imagem">
+                <div class="informacoes flex">
+                    <span class="titulo">{{produto.titulo}}</span>
+                    <span class="texto cinza"><b>Cor</b>: <span class="cinza">{{produto.cor}}</span></span>
+                    <span class="texto cinza"><b>Tamanho</b>: <span class="cinza">{{produto.tamanho}}</span></span>
+                    <div class="qtd flex">
+                        <ion-icon name="remove-circle-outline" class="cinza"
+                            (click)="removerQuantidade(produto.idStorage)"></ion-icon>
+                        <span>{{produto.quantidade}}</span>
+                        <ion-icon name="add-circle" class="laranja" (click)="addQuantidade(produto.idStorage)">
+                        </ion-icon>
+                    </div>
+                    <span class="titulo" style="font-size: .9rem; margin-top: 5px;">{{calcTotalItem(produto.preco,
+                        produto.quantidade)}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="cupom flex">
+            <input type="text" placeholder="Insira um cupom" maxlength="10">
+            <button>Aplicar</button>
+        </div>
+        <div class="container-total flex">
+            <div class="subtotal flex between">
+                <span class="cinza">Subtotal</span>
+                <span class="laranja"><b>{{valor}}</b></span>
+            </div>
+            <div class="desconto flex between">
+                <span class="cinza">Desconto</span>
+                <span class="laranja"><b>R$ 0</b></span>
+            </div>
+            <div class="total flex between">
+                <span class="cinza">Total</span>
+                <span class="cinza">({{calcQuantidadeItens()}}
+                    {{(calcQuantidadeItens() == 1) ? 'item' : 'itens'}})
+                    <b class="laranja">{{valor}}</b></span>
+            </div>
+            <button (click)="avancarCompra()" class="flex">
+                <span *ngIf="!avancoBoolean">Prossiga com a compra</span>
+                <div class="loader" *ngIf="avancoBoolean"></div>
+            </button>
+        </div>
+
+
+    </div>
+</ion-content>

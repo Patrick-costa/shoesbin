@@ -1,0 +1,85 @@
+<ion-content fullscreen="true">
+  <div class="header">
+    <div class="topo"><span>Filtrar</span></div>
+    <ion-icon name="close" routerLink="/home" routerLinkActive="active"></ion-icon>
+  </div>
+  <ion-accordion-group>
+    <div class="escolhidos grid">
+      <div class="opcao-filtro flex" *ngIf="escolhidos.marca">
+        {{escolhidos.marca}}
+        <ion-icon name="close" (click)="excluirFiltro(escolhidos.marca)"></ion-icon>
+      </div>
+      <div class="opcao-filtro flex" *ngIf="escolhidos.cor">
+        {{escolhidos.cor}}
+        <ion-icon name="close" (click)="excluirFiltro(escolhidos.cor)"></ion-icon>
+      </div>
+      <div class="opcao-filtro flex" *ngIf="escolhidos.tamanho > 0">
+        {{escolhidos.tamanho}}
+        <ion-icon name="close" (click)="excluirFiltro(escolhidos.tamanho)"></ion-icon>
+      </div>
+      <div class="opcao-filtro flex" *ngIf="escolhidos.categoria">
+        {{escolhidos.categoria}}
+        <ion-icon name="close" (click)="excluirFiltro(escolhidos.categoria)"></ion-icon>
+      </div>
+
+    </div>
+    <ion-accordion value="first">
+      <ion-item slot="header">
+        <ion-label>Marca</ion-label>
+      </ion-item>
+      <div class="ion-padding cinza flex accordion" slot="content">
+        <button class="outra-opcao" *ngFor="let marcas of marca" (click)="definirMarca(marcas)">
+          {{marcas}}
+        </button>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="second">
+      <ion-item slot="header">
+        <ion-label>Tamanho</ion-label>
+      </ion-item>
+      <div class="ion-padding grid cinza accordion" slot="content">
+        <button class="opcao" *ngFor="let tamanhos of tamanho" (click)="definirTamanho(tamanhos)">
+          {{tamanhos}}
+        </button>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="third">
+      <ion-item slot="header">
+        <ion-label>Cor</ion-label>
+      </ion-item>
+      <div class="ion-padding cinza accordion" slot="content">
+        <button class="outra-opcao" *ngFor="let cores of cor" (click)="definirCor(cores)">
+          {{cores}}
+        </button>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="four">
+      <ion-item slot="header">
+        <ion-label>Categoria</ion-label>
+      </ion-item>
+      <div class="ion-padding cinza accordion" slot="content">
+        <button class="outra-opcao" *ngFor="let categorias of categoria" (click)="definirCategoria(categorias)">
+          {{categorias}}
+        </button>
+      </div>
+    </ion-accordion>
+
+  </ion-accordion-group>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <div class="botoes">
+      <button class="limpar" (click)="limparFiltro()">
+        Limpar tudo
+      </button>
+
+      <button class="aplicar" (click)="filtrar()">
+        Aplicar
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

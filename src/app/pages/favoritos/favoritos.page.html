@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="pagina">
+    <div class="menu">
+      <ion-icon name="person-circle-outline" routerLink="/perfil"></ion-icon>
+      <div class="opcao" routerLink="/home">
+        <p>Inicio</p>
+      </div>
+      <div class="opcao" routerLink="/favoritos">
+        <p>Favoritos</p>
+      </div>
+      <div class="opcao" routerLink="/carrinho">
+        <p>Carrinho</p>
+      </div>
+      <div class="opcao">
+        <p>Minhas Compras</p>
+      </div>
+      <div class="opcao" (click)="logout()">
+        <p>Logout</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="topo">
+        <span>Favoritos</span>
+        <ion-icon name="cart-outline"></ion-icon>
+      </div>
+      <div class="items">
+
+        <div class="caixa" *ngFor="let produto of favoritos" [routerLink]="['/visualizar-produto', produto.produto.id]">
+          <div class="imagem flex">
+            <img [src]="produto.produto.imagem">
+          </div>
+          <div class="titulo">
+            {{produto.produto.titulo}}
+          </div>
+          <div class="preco">
+            <span class="preco-antigo">
+              {{adicionarPrecoAntigo(produto.produto.preco)}}
+            </span>
+            <span class="preco-novo">
+              {{substituirPontoFlutuante(produto.produto.preco)}}
+            </span>
+          </div>
+          <div class="parcela">
+            ou até 6x de <b>{{substituirPontoFlutuante(produto.produto.preco/6)}}</b>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+</ion-content>

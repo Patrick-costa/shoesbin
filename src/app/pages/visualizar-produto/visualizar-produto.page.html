@@ -1,0 +1,72 @@
+<ion-content>
+  <div class="container-produto">
+    <div class="topo">
+      <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+      <ion-icon [name]="favIcon" [class.fav]="favIcon == 'star'" (click)="favoritar(produto.id)"></ion-icon>
+    </div>
+    <div class="items">
+
+      <div class="caixa">
+        <div class="imagem flex">
+          <img [src]="produto.imagem">
+        </div>
+        <div class="titulo">
+          {{produto.titulo}} {{produto.cor}}
+        </div>
+        <div class="preco flex">
+          <span class="preco-antigo">
+            {{adicionarPrecoAntigo(produto.preco)}}
+          </span>
+          <span class="preco-novo">
+            {{substituirPontoFlutuante(produto.preco)}}
+          </span>
+        </div>
+        <div class="parcela">
+          ou até 6x de <b style="font-size: .85rem">{{substituirPontoFlutuante(produto.preco/6)}}</b>
+        </div>
+      </div>
+
+      <ion-accordion-group>
+        <ion-accordion value="first">
+          <ion-item slot="header">
+            <ion-label>Descrição</ion-label>
+          </ion-item>
+          <div class="ion-padding preto flex accordion ml-5" slot="content">
+            {{produto.descricao}}
+          </div>
+        </ion-accordion>
+        <ion-accordion value="second">
+          <ion-item slot="header">
+            <ion-label>Cores</ion-label>
+          </ion-item>
+          <div class="ion-padding flex accordion ml-5" slot="content">
+            <div class="cores" *ngFor="let item of produtosCores" [style.background]="item.hex"
+              [routerLink]="['/visualizar-produto', item.id]" [class.selecionado]="item.id == id">
+            </div>
+          </div>
+        </ion-accordion>
+        <ion-accordion value="third">
+          <ion-item slot="header">
+            <ion-label>Tamanho</ion-label>
+          </ion-item>
+          <div class="ion-padding ml-5 flex accordion" slot="content">
+            <div class="tamanho" *ngFor="let item of produtosTamanho" [routerLink]="['/visualizar-produto', item.id]"
+              [class.tamanhoSelecionado]="item.id == id">
+              {{item.tamanho}}
+            </div>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>
+    <div class="comprar">
+      <div class="quantidade flex">
+        <span>Quantidade: &nbsp;{{quantidade}} <span>( {{produto.quantidade}} disponiveis )</span></span>
+        <div class="botoes flex">
+          <ion-icon name="add" (click)="addQuantidade()"></ion-icon>
+          <ion-icon name="remove" (click)="diminuirQuantidade()"></ion-icon>
+        </div>
+      </div>
+      <button (click)="adicionarCarrinho()">Adicionar ao carrinho</button>
+    </div>
+  </div>
+</ion-content>

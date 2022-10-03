@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="pagina">
+    <div class="topo">
+      <div class="flex">
+        <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+        &nbsp;&nbsp;&nbsp;Selecione o endereço de entrega
+      </div>
+    </div>
+    <div class="aviso-topo flex">
+      <ion-icon name="information-circle"></ion-icon>
+      <span>
+        Se você vai enviar a compra para outro endereço
+        sem ser o da sua residência, certifique-se de que
+        haja alguém para recebê-la. Caso contrário,
+        envie-a para sua casa
+      </span>
+    </div>
+    <div class="container-enderecos flex">
+      <div class="enderecos flex" *ngIf="geolocationBoolean" (click)="marcarEndereco(converterGeolocationModelEndereco(),253405)">
+        <span>{{enderecoAtual.thoroughfare}} {{enderecoAtual.subThoroughfare}} - CEP {{enderecoAtual.postalCode}}
+        </span>
+        <span>{{enderecoAtual.subLocality}} - {{enderecoAtual.subAdministrativeArea}} -
+          {{enderecoAtual.administrativeArea}} - {{usuario.nome}}</span>
+          <a>Localização atual</a>
+          <ion-icon name="checkmark-circle" *ngIf="idEndereco == 253405"></ion-icon>
+      </div>
+
+      <div class="enderecos flex" *ngFor='let endereco of usuario.endereco' (click)="marcarEndereco(endereco, endereco.id)">
+        <span>{{endereco.logradouro}} {{endereco.numero}} - CEP {{endereco.cep}} </span>
+        <span>{{endereco.bairro}} - {{endereco.localidade}} - {{endereco.uf}} - {{usuario.nome}}</span>
+        <a>Endereço cadastrado</a>
+        <ion-icon name="checkmark-circle" *ngIf="idEndereco == endereco.id"></ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <button [class.button-active]="idEndereco" (click)="salvarEnderecoCompra()">
+    Avançar
+  </button>
+  <ion-toolbar>
+    <div class="flex">
+      <span class="vp">Você pagará</span>
+      <span class="vl">{{valor}}</span>
+    </div>
+  </ion-toolbar>
+</ion-footer>

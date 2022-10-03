@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="pagina">
+    <div class="topo">
+      <div class="flex">
+        <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+      </div>
+    </div>
+    <br><br>
+    <div>
+      {{endereco.logradouro}} {{endereco.numero}} - {{endereco.cep}} <br>
+      {{endereco.localidade}} {{ endereco.bairro}} - {{endereco.uf}}
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer collapse="fade">
+  <ion-toolbar>
+    <div class="flex">
+      <span class="vp">Você pagará</span>
+      <span class="vl">{{valor}}</span>
+    </div>
+  </ion-toolbar>
+</ion-footer>

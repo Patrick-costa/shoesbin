@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="pagina">
+    <div class="topo">
+      <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+      <span>CADASTRO</span>
+      <div></div>
+    </div>
+    <form [formGroup]="formulario">
+      <input type="text" name="nome" placeholder="Digite seu nome" formControlName="nome">
+      <input type="text" name="cpf" placeholder="Digite seu cpf" formControlName="cpf" [mask]="'000.000.000-00'">
+      <input type="tel" name="telefone" placeholder="Digite seu telefone" formControlName="telefone" [mask]="'(00) 00000-0000'">
+      <input type="email" name="email" placeholder="Digite seu email" formControlName="email">
+      <input type="text" name="cep" placeholder="Digite seu cep" formControlName="cep" (blur)="buscarCep()" #cep [mask]="'00000-000'">
+      <input type="text" name="logradouro" placeholder="Digite o logradouro" formControlName="logradouro" readonly>
+      <div class="flex between">
+        <input type="text" name="localidade" placeholder="Digite a cidade" class="w-45" formControlName="localidade"
+          readonly>
+        <input type="text" name="uf" placeholder="Digite o estado" class="w-45" formControlName="uf" readonly>
+      </div>
+      <input type="text" name="bairro" placeholder="Digite o bairro" formControlName="bairro" readonly>
+      <div class="flex between">
+        <input type="number" name="numero" class="w-20" placeholder="N°" formControlName="numero">
+        <input type="text" name="complemento" class="w-75" placeholder="Digite um complemento"
+          formControlName="complemento">
+      </div>
+      <div class="flex between">
+        <input type="password" name="senha" placeholder="Digite sua senha" formControlName="senha" class="w-45">
+        <input type="password" name="confirmarSenha" placeholder="Confirme a senha" formControlName="confirmarSenha" class="w-45">
+      </div>
+    </form>
+    <div class="flex-grow">
+      <button type="submit" (click)="cadastrar()">Cadastrar</button>
+    </div>
+  </div>
+</ion-content>

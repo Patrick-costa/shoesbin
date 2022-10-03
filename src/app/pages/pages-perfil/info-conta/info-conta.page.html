@@ -1,0 +1,81 @@
+<ion-content>
+  <div class="pagina">
+    <div class="caixa-infos">
+      <div class="topo">
+        <ion-icon name="arrow-back-outline" routerLink="/perfil"></ion-icon>
+      </div>
+      <div class="informacoes flex">
+        <div class="container-inicio flex">
+          <div>
+            <span class="texto-cinza">
+              Nome
+            </span>
+            <br>
+            <span class="texto-preto">
+              {{usuario.nome}}
+            </span>
+          </div>
+          <div class="imagem" [style.background-image]="'url('+usuario.imagemUrl+')'">
+          </div>
+        </div>
+
+        <div>
+          <span class="texto-cinza">
+            CPF
+          </span>
+          <br>
+          <span class="texto-preto rem08">
+            {{usuario.cpf | cpf}}
+          </span>
+        </div>
+
+        <div class="mt-5px">
+          <span class="texto-cinza">
+            Email
+          </span>
+          <br>
+          <span class="texto-preto rem08">
+            {{usuario.email}}
+          </span>
+        </div>
+
+        <div class="mt-5px">
+          <span class="texto-cinza">
+            Telefone
+          </span>
+          <br>
+          <span class="texto-preto rem08">
+            {{usuario.telefone | cel}}
+          </span>
+        </div>
+
+        <div class="mt-5px">
+          <span class="texto-cinza">
+            Registro
+          </span>
+          <br>
+          <span class="texto-preto rem08">
+            {{usuario.data }}
+          </span>
+        </div>
+        <div class="mt-5px">
+          <span class="texto-cinza">
+            Endereco Principal
+          </span>
+          <div class="enderecos texto-preto rem08">
+            {{usuario.endereco[0].logradouro}} {{usuario.endereco[0].numero}} <br> {{usuario.endereco[0].bairro}} - {{usuario.endereco[0].localidade}}/{{usuario.endereco[0].uf}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alterar-senha flex">
+      <h6>Mudança de senha</h6>
+      <input type="password" placeholder="Digite sua senha atual">
+      <input type="password" placeholder="Digite a nova senha">
+      <input type="password" placeholder="Confirme a nova senha">
+      <button>
+        Alterar
+      </button>
+    </div>
+  </div>
+</ion-content>

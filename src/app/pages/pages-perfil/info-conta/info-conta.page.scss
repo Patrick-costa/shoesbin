@@ -1,0 +1,75 @@
+:host {
+    height: 100vh
+}
+
+.pagina {
+    flex-direction: column;
+    padding: 20px;
+    height: 100vh;
+
+    .caixa-infos {
+        flex-grow: 1;
+        height: 100%;
+        .topo {
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        .informacoes {
+            margin-top: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow-y: auto;
+
+            .container-inicio {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .texto-cinza {
+                color: #9C9C9C;
+                font-size: .8rem;
+            }
+
+            .texto-preto {
+                color: #000000;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .imagem {
+                width: 50px;
+                height: 50px;
+                margin-top: 10px;
+                border-radius: 50%;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .rem08 {
+                font-size: .8rem;
+            }
+
+            .mt-5px {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.alterar-senha {
+    flex-grow: 0;
+    flex-direction: column;
+    input{
+        padding-left: 20px;
+    }
+    button {
+        width: 100%;
+        background-color: #E36C01;
+        color: #fff;
+        padding: 15px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}

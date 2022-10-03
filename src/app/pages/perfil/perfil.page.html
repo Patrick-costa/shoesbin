@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="pagina">
+    <div class="topo">
+      <ion-icon name="arrow-back-outline" (click)="voltar()"></ion-icon>
+      <ion-icon name="cart-outline" class="carrinho"></ion-icon>
+    </div>
+
+    <div class="perfil flex">
+      <div class="container-camera">
+        <div class="img" [style.background]="'url('+background+')'"></div>
+        <button (click)="escolherFoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </div>
+      <span>{{usuario.nome}}</span>
+      <span class="email">{{usuario.email}}</span>
+    </div>
+
+    <div class="container-opcoes flex">
+      <div class="opcoes flex" (click)="acessarInfoConta()">
+        <ion-icon name="information-circle-outline"></ion-icon> Informações da Conta
+      </div>
+      <div class="opcoes flex">
+        <ion-icon name="cube-outline"></ion-icon> Pedidos em Andamento
+      </div>
+      <div class="opcoes flex">
+        <ion-icon name="location-outline"></ion-icon> Endereços
+      </div>
+      <div class="opcoes flex">
+        <ion-icon name="bag-outline"></ion-icon> Compras
+      </div>
+      <div class="opcoes flex">
+        <ion-icon name="help-circle-outline"></ion-icon> Ajuda
+      </div>
+      <div class="opcoes flex">
+        <ion-icon name="exit-outline"></ion-icon> Sair
+      </div>
+    </div>
+  </div>
+</ion-content>

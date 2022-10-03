@@ -1,0 +1,70 @@
+<ion-content [fullscreen]="true">
+  <div class="pagina">
+
+    <!-- fab placed to the bottom end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="dark" routerLink="/carrinho">
+        <ion-icon name="cart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+    <div class="menu">
+      <ion-icon name="person-circle-outline" routerLink="/perfil"></ion-icon>
+      <div class="opcao" routerLink="/home">
+        <p>Inicio</p>
+      </div>
+      <div class="opcao" routerLink="/favoritos">
+        <p>Favoritos</p>
+      </div>
+      <div class="opcao" routerLink="/carrinho">
+        <p>Carrinho</p>
+      </div>
+      <div class="opcao">
+        <p>Minhas Compras</p>
+      </div>
+      <div class="opcao" (click)="logout()">
+        <p>Logout</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="topo">
+        <span>Calçados</span>
+        <ion-icon name="options-outline" routerLink="filtro" (click)="acessarFiltro()" ></ion-icon>
+
+      </div>
+      <div class="pesquisa">
+        <div>
+          <input type="text" placeholder="Pesquisar" (click)="statusIcon = true" (blur)="statusIcon = false" (input)="filtrarNome($event)">
+          <ion-icon class="icon-pesquisa" name="search-outline" [class.colorir]="statusIcon == true"></ion-icon>
+        </div>
+      </div>
+
+      
+      <div class="items">
+
+        <div class="caixa" *ngFor="let produto of produtos | nome : filtro | marca : marca | cor: cor | tamanho : tamanho | categoria : categoria " [routerLink]="['/visualizar-produto', produto.id]">
+          <div class="imagem flex">
+            <img [src]="produto.imagem">
+          </div>
+          <div class="titulo">
+            {{produto.titulo}}
+          </div>
+          <div class="preco">
+            <span class="preco-antigo">
+              {{adicionarPrecoAntigo(produto.preco)}}
+            </span>
+            <span class="preco-novo">
+              {{substituirPontoFlutuante(produto.preco)}}
+            </span>
+          </div>
+          <div class="parcela">
+            ou até 6x de <b>{{substituirPontoFlutuante(produto.preco/6)}}</b>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

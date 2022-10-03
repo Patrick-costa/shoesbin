@@ -1,0 +1,50 @@
+<ion-content>
+
+
+    <form (ngSubmit)="submit()" action="http://localhost:9090/file/upload" method="POST" enctype="multipart/form-data">
+        <div class="col-6">
+            <label>Titulo</label>
+            <input id="titulo" name="titulo" [(ngModel)]="model.titulo" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Marca</label>
+            <input id="marca" name="marca" [(ngModel)]="model.marca" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Tamanho</label>
+            <input id="tamanho" name="tamanho" [(ngModel)]="model.tamanho" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Cor</label>
+            <input id="cor" name="cor" [(ngModel)]="model.cor" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Hexadecimal</label>
+            <input id="cor" name="hex" [(ngModel)]="model.hex" class="form-control" type="color">
+        </div>
+        <div class="col-6">
+            <label>Categoria</label>
+            <input id="cor" name="categoria" [(ngModel)]="model.categoria" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Preço</label>
+            <input id="preco" name="preco" [(ngModel)]="model.preco" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+            <label>Descrição</label>
+            <textarea id="descricao" name="descricao" [(ngModel)]="model.descricao" class="form-control" type="text"></textarea>
+        </div>
+        <div class="col-6">
+            <label>Quantidade</label>
+            <input id="quantidade" name="quantidade" [(ngModel)]="model.quantidade" class="form-control" type="text">
+        </div>
+        <input type="file" (change)="teste($event)">
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+
+    <br><br>
+
+
+</ion-content>
